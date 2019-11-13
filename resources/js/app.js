@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +22,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('vbutton', require('./components/Button.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +32,25 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    theme: {
+        options: {
+          customProperties: true
+        },
+        themes: {
+          light: {
+            primary: '#ee44aa',
+            secondary: '#424242',
+            accent: '#82B1FF',
+            error: '#FF5252',
+            info: '#2196F3',
+            success: '#4CAF50',
+            warning: '#FFC107'
+          }
+        }
+      },
+      icons: {
+        iconfont: 'mdi'
+      }
 });
+
+
