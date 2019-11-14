@@ -90,7 +90,7 @@
         <v-col cols="6" md="4">
           <v-card class="mx-2 pa-5" max-width="400" outlined>
             <v-card-text>
-              <p class="font-weight-black text-center">Titulo</p>
+              <p class="font-weight-black text-center">Título</p>
             </v-card-text>
             <div class="d-flex justify-center mb-5">
               <v-avatar color="indigo" size="250">

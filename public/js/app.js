@@ -38364,7 +38364,7 @@ var render = function() {
                         _c(
                           "p",
                           { staticClass: "font-weight-black text-center" },
-                          [_vm._v("Titulo")]
+                          [_vm._v("Título")]
                         )
                       ]),
                       _vm._v(" "),
