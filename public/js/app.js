@@ -1941,23 +1941,121 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       valid: true,
       name: "",
       lastName: "",
+      phone: "",
       date: "",
+      oldPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+      actualyPassword: "",
+      deleteAccount: "",
       nameRules: [function (v) {
-        return !!v || "Name is required";
+        return !!v || "El nombre es requerido";
       }, function (v) {
-        return v && v.length <= 10 || "Name must be less than 10 characters";
+        return v && v.length <= 10 || "El nombre debe tener menos de 10 caracteres.";
+      }],
+      lastNameRules: [function (v) {
+        return !!v || "El apellido es requerido";
+      }, function (v) {
+        return v && v.length <= 10 || "El apellido debe tener menos de 10 caracteres.";
       }],
       email: "",
       emailRules: [function (v) {
-        return !!v || "E-mail is required";
+        return !!v || "El correo electronico es requerido";
       }, function (v) {
-        return /.+@.+\..+/.test(v) || "E-mail must be valid";
+        return /.+@.+\..+/.test(v) || "El correo electrónico debe ser válido";
       }],
       select: null,
       items: ["Masculino", "Femenino"],
@@ -37992,48 +38090,32 @@ var render = function() {
     "v-app",
     [
       _c(
-        "v-row",
-        { attrs: { justify: "space-around" } },
+        "v-container",
+        { attrs: { fluid: "" } },
         [
           _c(
-            "v-card",
-            {
-              staticClass: "mx-2",
-              attrs: { "max-width": "500", outlined: "" }
-            },
+            "v-row",
+            { attrs: { justify: "start d-flex flex-wrap" } },
             [
               _c(
-                "v-row",
-                { attrs: { dense: "" } },
+                "v-col",
+                { attrs: { cols: "6", md: "4" } },
                 [
                   _c(
-                    "v-col",
-                    { attrs: { cols: "12" } },
+                    "v-card",
+                    {
+                      staticClass: "mx-2 pa-5",
+                      attrs: { "max-width": "500", outlined: "" }
+                    },
                     [
-                      _c(
-                        "v-card-text",
-                        [
-                          _c("v-card-title", { staticClass: "headline" }, [
-                            _vm._v("Informacion General")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-row",
-                { staticClass: "px-4", attrs: { dense: "" } },
-                [
-                  _c(
-                    "v-col",
-                    { attrs: { cols: "12" } },
-                    [
+                      _c("v-card-text", [
+                        _c(
+                          "p",
+                          { staticClass: "font-weight-black text-center" },
+                          [_vm._v("Información General")]
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c(
                         "v-form",
                         {
@@ -38067,7 +38149,7 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: {
                               counter: 10,
-                              rules: _vm.nameRules,
+                              rules: _vm.lastNameRules,
                               label: "Apellido",
                               required: ""
                             },
@@ -38100,7 +38182,7 @@ var render = function() {
                               items: _vm.items,
                               rules: [
                                 function(v) {
-                                  return !!v || "Item is required"
+                                  return !!v || "El sexo es requerido"
                                 }
                               ],
                               label: "Sexo",
@@ -38118,8 +38200,7 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: {
                               type: "date",
-                              label: "Fecha de Nacimiento",
-                              required: ""
+                              label: "Fecha de Nacimiento"
                             },
                             model: {
                               value: _vm.date,
@@ -38130,14 +38211,24 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: { label: "Telefono" },
+                            model: {
+                              value: _vm.phone,
+                              callback: function($$v) {
+                                _vm.phone = $$v
+                              },
+                              expression: "phone"
+                            }
+                          }),
+                          _vm._v(" "),
                           _c(
                             "v-btn",
                             {
-                              staticClass: "m-auto align-center",
-                              attrs: { color: "success" },
+                              attrs: { color: "success", block: "" },
                               on: { click: _vm.validate }
                             },
-                            [_vm._v("Validate")]
+                            [_vm._v("Validar")]
                           )
                         ],
                         1
@@ -38147,31 +38238,106 @@ var render = function() {
                   )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card",
-            {
-              staticClass: "mx-1",
-              attrs: { "max-width": "400", outlined: "" }
-            },
-            [
+              ),
+              _vm._v(" "),
               _c(
-                "v-row",
-                { attrs: { dense: "" } },
+                "v-col",
+                { attrs: { cols: "6", md: "4" } },
                 [
                   _c(
-                    "v-col",
-                    { attrs: { cols: "12" } },
+                    "v-card",
+                    {
+                      staticClass: "mx-2 pa-5",
+                      attrs: { "max-width": "400", outlined: "" }
+                    },
                     [
+                      _c("v-card-text", [
+                        _c(
+                          "p",
+                          { staticClass: "font-weight-black text-center" },
+                          [_vm._v("Foto de perfil")]
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c(
-                        "v-card-text",
+                        "div",
+                        { staticClass: "d-flex justify-center mb-5" },
                         [
-                          _c("v-card-title", { staticClass: "headline" }, [
-                            _vm._v("Notificaciones")
+                          _c(
+                            "v-avatar",
+                            { attrs: { color: "indigo", size: "250" } },
+                            [
+                              _c(
+                                "v-icon",
+                                { attrs: { size: "220", dark: "" } },
+                                [_vm._v("mdi-account-circle")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-btn", { attrs: { color: "success", block: "" } }, [
+                        _vm._v("Subir")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "6", md: "4" } },
+                [
+                  _c(
+                    "v-card",
+                    {
+                      staticClass: "mx-2 pa-5",
+                      attrs: { "max-width": "400", outlined: "" }
+                    },
+                    [
+                      _c("v-card-text", [
+                        _c(
+                          "p",
+                          { staticClass: "font-weight-black text-center" },
+                          [_vm._v("Notificaciones")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "px-4" },
+                        [
+                          _c(
+                            "p",
+                            { staticClass: "text-uppercase font-weight-black" },
+                            [_vm._v("sms")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-alert", { attrs: { type: "success" } }, [
+                            _vm._v("Solicitudes de clase")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            { staticClass: "text-uppercase font-weight-black" },
+                            [_vm._v("Correo electronico")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-alert", { attrs: { type: "success" } }, [
+                            _vm._v("Actividad de la cuenta")
+                          ]),
+                          _vm._v(" "),
+                          _c("v-alert", { attrs: { type: "success" } }, [
+                            _vm._v("Solicitudes de clase")
+                          ]),
+                          _vm._v(" "),
+                          _c("v-alert", { attrs: { type: "success" } }, [
+                            _vm._v("Ofertas relacionadas con mis anuncios")
                           ])
                         ],
                         1
@@ -38184,24 +38350,229 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "v-row",
-                { staticClass: "px-4", attrs: { dense: "" } },
+                "v-col",
+                { attrs: { cols: "6", md: "4" } },
                 [
                   _c(
-                    "v-col",
-                    { attrs: { cols: "12" } },
+                    "v-card",
+                    {
+                      staticClass: "mx-2 pa-5",
+                      attrs: { "max-width": "400", outlined: "" }
+                    },
                     [
-                      _c("v-alert", { attrs: { type: "info" } }, [
-                        _vm._v("\n              I'm a info alert.\n          ")
+                      _c("v-card-text", [
+                        _c(
+                          "p",
+                          { staticClass: "font-weight-black text-center" },
+                          [_vm._v("Titulo")]
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("v-alert", { attrs: { type: "info" } }, [
-                        _vm._v("\n              I'm a info alert.\n          ")
-                      ]),
+                      _c(
+                        "div",
+                        { staticClass: "d-flex justify-center mb-5" },
+                        [
+                          _c(
+                            "v-avatar",
+                            { attrs: { color: "indigo", size: "250" } },
+                            [
+                              _c(
+                                "v-icon",
+                                { attrs: { size: "180", dark: "" } },
+                                [_vm._v("mdi-book-outline")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      _c("v-alert", { attrs: { type: "info" } }, [
-                        _vm._v("\n              I'm a info alert.\n          ")
+                      _c("v-btn", { attrs: { color: "success", block: "" } }, [
+                        _vm._v("Subir")
                       ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "6", md: "4" } },
+                [
+                  _c(
+                    "v-card",
+                    {
+                      staticClass: "mx-2 pa-5",
+                      attrs: { "max-width": "500", outlined: "" }
+                    },
+                    [
+                      _c("v-card-text", [
+                        _c(
+                          "p",
+                          { staticClass: "font-weight-black text-center" },
+                          [_vm._v("Cambiar la contraseña")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-form",
+                        {
+                          ref: "form",
+                          staticClass: "align-center",
+                          model: {
+                            value: _vm.valid,
+                            callback: function($$v) {
+                              _vm.valid = $$v
+                            },
+                            expression: "valid"
+                          }
+                        },
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              label: "Antigua contraseña",
+                              type: "password"
+                            },
+                            model: {
+                              value: _vm.oldPassword,
+                              callback: function($$v) {
+                                _vm.oldPassword = $$v
+                              },
+                              expression: "oldPassword"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              label: "Nueva contraseña",
+                              type: "password"
+                            },
+                            model: {
+                              value: _vm.newPassword,
+                              callback: function($$v) {
+                                _vm.newPassword = $$v
+                              },
+                              expression: "newPassword"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              label: "Nueva contraseña",
+                              type: "password"
+                            },
+                            model: {
+                              value: _vm.confirmPassword,
+                              callback: function($$v) {
+                                _vm.confirmPassword = $$v
+                              },
+                              expression: "confirmPassword"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "white--text",
+                              attrs: { color: "blue-grey", block: "" }
+                            },
+                            [_vm._v("Cambiar mi contraseña")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "6", md: "4" } },
+                [
+                  _c(
+                    "v-card",
+                    {
+                      staticClass: "mx-2 pa-5",
+                      attrs: { "max-width": "400", outlined: "" }
+                    },
+                    [
+                      _c("v-card-text", [
+                        _c(
+                          "p",
+                          { staticClass: "font-weight-black text-center" },
+                          [_vm._v("Eliminación de la cuenta")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "¡ATENCIÓN! Todos tus datos (contactos, anuncios, correos electrónicos,...) serán eliminados definitivamente y de manera irreversible."
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-form",
+                        {
+                          ref: "form",
+                          staticClass: "align-center",
+                          model: {
+                            value: _vm.valid,
+                            callback: function($$v) {
+                              _vm.valid = $$v
+                            },
+                            expression: "valid"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "justify-center mb-5" },
+                            [
+                              _c("v-checkbox", {
+                                attrs: { label: "Eliminar mi cuenta" },
+                                model: {
+                                  value: _vm.deleteAccount,
+                                  callback: function($$v) {
+                                    _vm.deleteAccount = $$v
+                                  },
+                                  expression: "deleteAccount"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Contraseña",
+                                  type: "actualyPassword"
+                                },
+                                model: {
+                                  value: _vm.newPassword,
+                                  callback: function($$v) {
+                                    _vm.newPassword = $$v
+                                  },
+                                  expression: "newPassword"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "white--text",
+                              attrs: { color: "blue-grey", block: "" }
+                            },
+                            [_vm._v("Eliminar mi cuenta")]
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
