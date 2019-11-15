@@ -9,6 +9,8 @@ import 'vue-material/dist/theme/default.css'
 // Components
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('Profile', require('./components/Profile.vue').default);
+Vue.component('Home', require('./components/Home.vue').default);
+Vue.component('FooterApp', require('./components/FooterApp.vue').default);
 
 
 const app = new Vue({
